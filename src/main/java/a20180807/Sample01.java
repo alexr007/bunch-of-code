@@ -20,5 +20,6 @@ public class Sample01 {
     public static void main(String[] args) {
         print(1,10);
         print(10,20);
+        print(11,22);
     }
 }
