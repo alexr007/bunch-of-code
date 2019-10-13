@@ -1,4 +1,4 @@
-package test.intetics;
+package interview.intetics;
 
 import org.junit.Test;
 
