@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <jetty.version>9.4.6.v20170531</jetty.version>
+        <jetty.version>9.4.17.v20190418</jetty.version>
     </properties>
 
     <dependencies>
@@ -72,32 +72,32 @@
             <artifactId>bonecp</artifactId>
             <version>0.8.0.RELEASE</version>
         </dependency>
-<!--
-        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.kafka/kafka &ndash;&gt;
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.12</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients &ndash;&gt;
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>1.1.0</version>
-        </dependency>
--->
-<!--
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>0.8.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.10</artifactId>
-            <version>0.8.2.1</version>
-        </dependency>
--->
+        <!--
+                &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.kafka/kafka &ndash;&gt;
+                <dependency>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>kafka_2.12</artifactId>
+                    <version>1.1.0</version>
+                </dependency>
+                &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients &ndash;&gt;
+                <dependency>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>kafka-clients</artifactId>
+                    <version>1.1.0</version>
+                </dependency>
+        -->
+        <!--
+                <dependency>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>kafka-clients</artifactId>
+                    <version>0.8.2.1</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>kafka_2.10</artifactId>
+                    <version>0.8.2.1</version>
+                </dependency>
+        -->
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -121,15 +121,15 @@
             <version>4.12</version>
         </dependency>
 
-<!--
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-bom</artifactId>
-            <version>1.11.338</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
--->
+        <!--
+                <dependency>
+                    <groupId>com.amazonaws</groupId>
+                    <artifactId>aws-java-sdk-bom</artifactId>
+                    <version>1.11.338</version>
+                    <type>pom</type>
+                    <scope>import</scope>
+                </dependency>
+        -->
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk</artifactId>
@@ -151,39 +151,39 @@
                 </dependency>
         -->
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
-<!--
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.25</version>
-        </dependency>
--->
+        <!--
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-nop</artifactId>
+                    <version>1.7.25</version>
+                </dependency>
+        -->
         <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
-<!--
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
--->
+        <!--
+                <dependency>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                    <version>1.2.3</version>
+                </dependency>
+        -->
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
-<!--
-        &lt;!&ndash; https://mvnrepository.com/artifact/org.slf4j/slf4j-jdk14 &ndash;&gt;
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>
-            <version>1.7.25</version>
-            <scope>test</scope>
-        </dependency>
--->
-<!--
-        &lt;!&ndash; https://mvnrepository.com/artifact/com.jcabi/jcabi-log &ndash;&gt;
-        <dependency>
-            <groupId>com.jcabi</groupId>
-            <artifactId>jcabi-log</artifactId>
-            <version>0.18</version>
-        </dependency>
--->
+        <!--
+                &lt;!&ndash; https://mvnrepository.com/artifact/org.slf4j/slf4j-jdk14 &ndash;&gt;
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-jdk14</artifactId>
+                    <version>1.7.25</version>
+                    <scope>test</scope>
+                </dependency>
+        -->
+        <!--
+                &lt;!&ndash; https://mvnrepository.com/artifact/com.jcabi/jcabi-log &ndash;&gt;
+                <dependency>
+                    <groupId>com.jcabi</groupId>
+                    <artifactId>jcabi-log</artifactId>
+                    <version>0.18</version>
+                </dependency>
+        -->
         <!-- https://mvnrepository.com/artifact/org.cactoos/cactoos -->
         <dependency>
             <groupId>org.cactoos</groupId>
