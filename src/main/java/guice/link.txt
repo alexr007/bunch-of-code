@@ -1,0 +1,9 @@
+Just to write clean OOP code with 3 constructors and get a feedback:
+"...
+we also know that Nothing good happens after making a constructor public
+A public constructor will have illicit uses introduced within a code base. These uses necessarily will:
+- make refactoring more difficult.
+- break the interface-implementation abstraction barrier.
+- introduce tighter coupling within a codebase.
+...
+After careful consideration we have decided not to take your application to the next step"
