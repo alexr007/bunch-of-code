@@ -2,8 +2,6 @@ package codewars.l8;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertArrayEquals;
-
 public class Xbonacci {
   public double[] tribonacci(double[] s, int n) {
     double[] r = new double[n];
@@ -17,7 +15,7 @@ public class Xbonacci {
   public static void main(String[] args) {
     Xbonacci variabonacci = new Xbonacci();
     double precision = 1e-10;
+
     System.out.println(Arrays.toString(variabonacci.tribonacci(new double []{1,1,1},10)));
-    assertArrayEquals(new double []{1,1,1,3,5,9,17,31,57,105}, variabonacci.tribonacci(new double []{1,1,1},10), precision);
   }
 }
