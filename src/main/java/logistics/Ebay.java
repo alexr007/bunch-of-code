@@ -1,7 +1,5 @@
 package logistics;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,16 +22,4 @@ public class Ebay {
     return Optional.empty();
   }
 
-  public static void main(String[] args) {
-    Ebay ebay = new Ebay();
-    List<String> test = Arrays.asList(
-        "'# 352624904606'",
-        "(123456789012)",
-        "(123456789012)ab",
-        "a (123456789012) b"
-    );
-    test.forEach(n -> {
-      System.out.println(ebay.extract_id(n));
-    });
-  }
 }
