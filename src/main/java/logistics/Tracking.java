@@ -41,7 +41,7 @@ public class Tracking {
    * if no company found - return Company.Unknown
    */
   public static Company parse(String origin_) {
-    return Match.one(origin_, Pt.ANY_TRACK)
+    return Match.one(origin_, Pt.ANY_TRACK) // Optional<String>
         .flatMap(origin -> parsers.stream()
             .map(parser -> parser.extractor.apply(origin).map(parser.create_company))
             .flatMap(c -> c.map(Stream::of).orElseGet(Stream::empty))
