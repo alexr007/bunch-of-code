@@ -66,13 +66,9 @@ public class Alphabet {
         .collect(Collectors.joining("\n"));      // join resulted lines with "\n"
   }
 
-  public void print(String word) {
-    System.out.println(bitmap(word));
-  }
-
   public static void main(String[] args) {
     final Alphabet a = new Alphabet();
-    a.print(" ABCBA ");
+    System.out.println(a.bitmap(" ABCBA "));
   }
 
 }
