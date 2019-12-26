@@ -5,86 +5,77 @@ import java.util.stream.*;
 
 public class Alphabet {
 
-    enum Letters {
-        A(
-                "   *   ",
-                "  * *  ",
-                " *   * ",
-                "*     *",
-                "*******",
-                "*     *",
-                "*     *"
-        ),
-        B(
-                "*****  ",
-                "*     *",
-                "*     *",
-                "*****  ",
-                "*     *",
-                "*     *",
-                "*****  "
-        ),
-        C(
-                " ***** ",
-                "*     *",
-                "*      ",
-                "*      ",
-                "*      ",
-                "*     *",
-                " ***** "
-        ),
-        None(
-                "*******",
-                "*******",
-                "*******",
-                "*******",
-                "*******",
-                "*******",
-                "*******"
-        );
+  enum Letters {
+    A(
+        "   *   ",
+        "  * *  ",
+        " *   * ",
+        "*     *",
+        "*******",
+        "*     *",
+        "*     *"
+    ),
+    B(
+        "*****  ",
+        "*     *",
+        "*     *",
+        "*****  ",
+        "*     *",
+        "*     *",
+        "*****  "
+    ),
+    C(
+        " ***** ",
+        "*     *",
+        "*      ",
+        "*      ",
+        "*      ",
+        "*     *",
+        " ***** "
+    ),
+    None(
+        "*******",
+        "*******",
+        "*******",
+        "*******",
+        "*******",
+        "*******",
+        "*******"
+    );
 
-        List<String> bitmap;
+    public final List<String> bitmap;
 
-        Letters(String... bmp) {
-            bitmap = Arrays.asList(bmp);
-        }
-
-        List<String> strings() {
-            return bitmap;
-        }
+    Letters(String... bmp) {
+      bitmap = Arrays.asList(bmp);
     }
+  }
 
-    private final String SPACE = " ";
-    private final String origin;
-    private final Map<Character, Letters> bitmaps =
-            Stream.of(Letters.values())
-            .filter(l -> !l.equals(Letters.None))
-            .collect(Collectors.toMap(
-                    letters -> letters.toString().charAt(0),
-                    letters -> letters
-            ));
+  private final static String SPACE = " ";
+  private final static Map<Character, Letters> bitmaps =
+      Stream.of(Letters.values())
+          .filter(l -> !l.equals(Letters.None))
+          .collect(Collectors.toMap(
+              letters -> letters.toString().charAt(0),
+              letters -> letters
+          ));
 
-    public Alphabet(String abc) {
-        this.origin = abc;
-    }
+  public String bitmap(String origin) {
+    final List<List<String>> word = origin.chars()
+        .mapToObj(c -> bitmaps.getOrDefault((char) c, Letters.None).bitmap)
+        .collect(Collectors.toList());
 
-    List<String> data() {
-        List<List<String>> word = origin.chars()
-                .mapToObj(c -> bitmaps.getOrDefault((char) c, Letters.None).strings())
-                .collect(Collectors.toList());
+    return IntStream.range(0, word.get(0).size())
+        .mapToObj(idx -> word.stream().map(line -> line.get(idx)).collect(Collectors.joining(SPACE)))
+        .collect(Collectors.joining("\n"));
+  }
 
-        return IntStream.range(0, word.get(0).size())
-                .mapToObj(idx -> word.stream().map(strings -> strings.get(idx)).collect(Collectors.joining(SPACE)))
-                .collect(Collectors.toList());
-    }
+  public void print(String word) {
+    System.out.println(bitmap(word));
+  }
 
-    void print() {
-        List<String> bitmap = data();
-        bitmap.forEach(System.out::println);
-    }
-
-    public static void main(String[] args) {
-        new Alphabet(" ABCBA ").print();
-    }
+  public static void main(String[] args) {
+    final Alphabet a = new Alphabet();
+    a.print(" ABCBA ");
+  }
 
 }
