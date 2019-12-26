@@ -51,22 +51,19 @@ public class Alphabet {
   }
 
   private final static String SPACE = " ";
-  private final static Map<Character, Letters> bitmaps =
-      Stream.of(Letters.values())
-          .filter(l -> !l.equals(Letters.None))
-          .collect(Collectors.toMap(
-              letters -> letters.toString().charAt(0),
-              letters -> letters
-          ));
+  private final static Map<Character, Letters> bitmaps = Stream.of(Letters.values())
+      .filter(l -> !l.equals(Letters.None))
+      .collect(Collectors.toMap(
+          letters -> letters.toString().charAt(0),
+          letters -> letters
+      ));
 
   public String bitmap(String origin) {
-    final List<List<String>> word = origin.chars()
-        .mapToObj(c -> bitmaps.getOrDefault((char) c, Letters.None).bitmap)
-        .collect(Collectors.toList());
-
-    return IntStream.range(0, word.get(0).size())
-        .mapToObj(idx -> word.stream().map(line -> line.get(idx)).collect(Collectors.joining(SPACE)))
-        .collect(Collectors.joining("\n"));
+    return IntStream.range(0, Letters.None.bitmap.size()) // iterate over lines
+        .mapToObj(ln -> origin.chars()                    // iterate over letters in word
+            .mapToObj(ch -> bitmaps.getOrDefault((char) ch, Letters.None).bitmap.get(ln))
+            .collect(Collectors.joining(SPACE)))          // join parts of letters to one line with " "
+        .collect(Collectors.joining("\n"));      // join resulted lines with "\n"
   }
 
   public void print(String word) {
