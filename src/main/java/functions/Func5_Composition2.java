@@ -57,7 +57,7 @@ public class Func5_Composition2 {
         .chain(printer, "Z2")
         .chain(printer, "Z3");
 
-    c.fold();
+    c.fold(); // we are running our code only here
 
   }
 
