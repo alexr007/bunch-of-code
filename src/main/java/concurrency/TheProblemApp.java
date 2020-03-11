@@ -1,4 +1,4 @@
-package threads;
+package concurrency;
 
 import lombok.SneakyThrows;
 

@@ -1,4 +1,4 @@
-package a_patterns.implement_;
+package patterns.implement_;
 
 public final class Child implements Human, Mother, Father {
 

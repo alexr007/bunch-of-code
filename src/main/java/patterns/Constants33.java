@@ -1,4 +1,4 @@
-package a_patterns;
+package patterns;
 
 public interface Constants33 {
    int A = 33;

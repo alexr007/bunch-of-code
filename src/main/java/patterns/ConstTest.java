@@ -1,4 +1,4 @@
-package a_patterns;
+package patterns;
 
 public class ConstTest implements Constants33{
 

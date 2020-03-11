@@ -1,4 +1,4 @@
-package a_patterns.observer;
+package patterns.observer;
 
 public class Subscriber {
     private final String name;
