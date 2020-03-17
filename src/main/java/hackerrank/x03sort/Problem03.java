@@ -27,7 +27,7 @@ public class Problem03 {
   static int activityNotifications(int[] expenditure, int d) {
     return (int) IntStream.range(0, expenditure.length - d).mapToObj(idx -> new Pair(median5(expenditure, idx, d), expenditure[idx + d]))
         .filter(p -> p.val >= p.med * 2)
-        .peek(p -> System.out.printf("%d %d", p.med, p.val))
+//        .peek(p -> System.out.printf("%d %d", p.med, p.val))
         .count();
   }
 
@@ -37,7 +37,7 @@ public class Problem03 {
     int[] d = Arrays.stream(content.split(" ")).mapToInt(Integer::parseInt).toArray();
 //    int[] d = {2, 3, 4, 2, 3, 6, 8, 4, 5};
 //    int[] d = {1, 2, 3, 4, 4};
-    int r = activityNotifications(d, 10000);
+    int r = activityNotifications(d, 10000); // 200000 10000
     System.out.printf("The answer is: %d\n", r);
   }
 }
