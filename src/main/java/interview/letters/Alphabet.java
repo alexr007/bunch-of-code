@@ -5,7 +5,7 @@ import java.util.stream.*;
 
 public class Alphabet {
 
-  enum Letters {
+  private enum Letters {
     A(
         "   *   ",
         "  * *  ",
@@ -58,7 +58,7 @@ public class Alphabet {
           letters -> letters
       ));
 
-  public String bitmap(String origin) {
+  public static String render(String origin) {
     return IntStream.range(0, Letters.None.bitmap.size()) // iterate over lines
         .mapToObj(ln -> origin.chars()                    // iterate over letters in word
             .mapToObj(ch -> bitmaps.getOrDefault((char) ch, Letters.None).bitmap.get(ln))
@@ -67,8 +67,7 @@ public class Alphabet {
   }
 
   public static void main(String[] args) {
-    final Alphabet a = new Alphabet();
-    System.out.println(a.bitmap(" ABCBA "));
+    System.out.println(Alphabet.render(" ABCBA "));
   }
 
 }
