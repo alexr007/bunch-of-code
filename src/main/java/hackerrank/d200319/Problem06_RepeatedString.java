@@ -1,4 +1,4 @@
-package hackerrank.x00warmup;
+package hackerrank.d200319;
 
 public class Problem06_RepeatedString {
   static long count(String s, long n) {

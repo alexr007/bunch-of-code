@@ -1,4 +1,4 @@
-package hackerrank.x00warmup;
+package hackerrank.d200319;
 
 public class Problem04_Hike {
   static int count(int n, String s) {

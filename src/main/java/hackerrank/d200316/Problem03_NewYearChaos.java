@@ -1,4 +1,4 @@
-package hackerrank.x01arrays;
+package hackerrank.d200316;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;

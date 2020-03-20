@@ -1,4 +1,4 @@
-package hackerrank.x02hash;
+package hackerrank.d200318;
 
 import java.util.HashSet;
 import java.util.Set;

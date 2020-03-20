@@ -1,4 +1,4 @@
-package hackerrank.x03sort;
+package hackerrank.d200317;
 
 public class Problem01 {
   static void countSwaps(int[] a) {

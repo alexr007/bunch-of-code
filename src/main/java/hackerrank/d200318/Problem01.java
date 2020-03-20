@@ -1,7 +1,6 @@
-package hackerrank.x02hash;
+package hackerrank.d200318;
 
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Problem01 {
