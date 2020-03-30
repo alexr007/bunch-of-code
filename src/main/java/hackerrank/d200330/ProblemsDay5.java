@@ -129,6 +129,7 @@ public class ProblemsDay5 {
     }
   }
 
+  // https://www.hackerrank.com/challenges/two-pluses/problem
   static int twoPluses(String[] grid) {
     int[][] data = convert(grid);
     int width = data[0].length;
