@@ -1,6 +1,7 @@
 package hackerrank.d200330;
 
 import java.math.BigDecimal;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -43,18 +44,6 @@ public class ProblemsDay5 {
         IntStream.range(0, grid[0].length()).forEach(x ->
             data[y][x] = grid[y].charAt(x) == 'G' ? 0 : 9));
     return data;
-  }
-
-  static class PlusAt {
-    final int x;
-    final int y;
-    final int size;
-
-    PlusAt(int x, int y, int size) {
-      this.x = x;
-      this.y = y;
-      this.size = size;
-    }
   }
 
   static boolean freeHorAt(int x, int y, int len, int[][] data) {
@@ -110,6 +99,25 @@ public class ProblemsDay5 {
     releaseVerAt(x, y+size/2, size, data);
   }
 
+  static class PlusAt {
+    final int x1;
+    final int y1;
+    final int x2;
+    final int y3;
+    final int size1;
+    final int size2;
+
+    PlusAt(int x1, int y1, int x2, int y3, int size1, int size2) {
+      this.x1 = x1;
+      this.y1 = y1;
+      this.x2 = x2;
+      this.y3 = y3;
+      this.size1 = size1;
+      this.size2 = size2;
+    }
+  }
+
+
   static int twoPluses(String[] grid) {
     int[][] data = convert(grid);
     int width = data[0].length;
@@ -117,13 +125,28 @@ public class ProblemsDay5 {
     int max_w = (width & 1) == 0 ? width - 1 : width;
     int max_h = (height & 1) == 0 ? height - 1 : height;
     int max_size = Math.min(max_w, max_h);
-    IntStream.rangeClosed(1, max_size).filter(x -> (x & 1) != 0).map(x -> max_size+1-x).boxed().flatMap(size1 ->
-            IntStream.rangeClosed(1, max_size).filter(x -> (x & 1) != 0).map(x -> max_size+1-x).boxed().map(size2 ->
-                ""
-                ));
+    List<PlusAt> combinations = IntStream.rangeClosed(1, max_size).filter(x -> (x & 1) != 0).map(x -> max_size + 1 - x).boxed().flatMap(size1 ->
+        IntStream.rangeClosed(1, max_size).filter(x -> (x & 1) != 0).map(x -> max_size + 1 - x).boxed().flatMap(size2 ->
+            IntStream.rangeClosed(0, width - size1).boxed().flatMap(x1 ->
+                IntStream.rangeClosed(0, height - size1).boxed().flatMap(y1 ->
+                    IntStream.rangeClosed(0, width - size2).boxed().flatMap(x2 ->
+                        IntStream.rangeClosed(0, height - size2).boxed().map(y2 ->
+                            new PlusAt(x1, y1, x2, y2, size1, size2)))))))
+        .collect(Collectors.toList());
     throw new RuntimeException();
   }
 
-  public static void main(String[] args) {
-  }
+    public static void main(String[] args) {
+      int[] random = new Random().ints(10, 25)
+          .limit(20).toArray();
+      ArrayList<Integer>randoms=new ArrayList<>();
+      for (int el:random) {
+        randoms.add(el);
+      }
+      randoms.parallelStream().
+          forEach(a->
+              System.out.printf("Number of occurences:%d,number:%d\n"
+                  ,Collections.frequency(randoms,a),a));
+    }
+
 }
