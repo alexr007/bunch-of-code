@@ -85,25 +85,25 @@ public class ProblemsDay5 {
   }
 
   static boolean isPossibleAt(int x, int y, int size, int[][] data) {
-    return freeHorAt(x+size/2, y, size, data)
-        && freeVerAt(x, y+size/2, size, data);
+    return freeHorAt(x, y+size/2, size, data)
+        && freeVerAt(x+size/2, y, size, data);
   }
 
   static void occupyAt(int x, int y, int size, int[][] data) {
-    occupyHorAt(x+size/2, y, size, data);
-    occupyVerAt(x, y+size/2, size, data);
+    occupyHorAt(x, y+size/2, size, data);
+    occupyVerAt(x+size/2, y, size, data);
   }
 
   static void releaseAt(int x, int y, int size, int[][] data) {
-    releaseHorAt(x+size/2, y, size, data);
-    releaseVerAt(x, y+size/2, size, data);
+    releaseHorAt(x, y+size/2, size, data);
+    releaseVerAt(x+size/2, y, size, data);
   }
 
   static class PlusAt {
     final int x1;
     final int y1;
     final int x2;
-    final int y3;
+    final int y2;
     final int size1;
     final int size2;
 
@@ -111,12 +111,23 @@ public class ProblemsDay5 {
       this.x1 = x1;
       this.y1 = y1;
       this.x2 = x2;
-      this.y3 = y3;
+      this.y2 = y3;
       this.size1 = size1;
       this.size2 = size2;
     }
   }
 
+  static class PlusResult {
+    public final int size1;
+    public final int size2;
+    public final boolean ok;
+
+    PlusResult(int size1, int size2, boolean ok) {
+      this.size1 = size1;
+      this.size2 = size2;
+      this.ok = ok;
+    }
+  }
 
   static int twoPluses(String[] grid) {
     int[][] data = convert(grid);
@@ -133,20 +144,38 @@ public class ProblemsDay5 {
                         IntStream.rangeClosed(0, height - size2).boxed().map(y2 ->
                             new PlusAt(x1, y1, x2, y2, size1, size2)))))))
         .collect(Collectors.toList());
-    throw new RuntimeException();
+    return combinations.stream().map(c -> {
+      if (isPossibleAt(c.x1,c.y1,c.size1, data)) {
+              occupyAt(c.x1,c.y1,c.size1, data);
+        if (isPossibleAt(c.x2,c.y2,c.size2, data)) {
+          releaseAt(c.x1,c.y1,c.size1, data);
+          return new PlusResult(c.size1, c.size2, true);
+        }
+        releaseAt(c.x1,c.y1,c.size1, data);
+      }
+      return new PlusResult(c.size1, c.size2, false);
+    })
+        .filter(r -> r.ok)
+        .mapToInt(r -> (r.size1*2-1)*(r.size2*2-1))
+        .max()
+        .orElseThrow(RuntimeException::new);
   }
 
     public static void main(String[] args) {
-      int[] random = new Random().ints(10, 25)
-          .limit(20).toArray();
-      ArrayList<Integer>randoms=new ArrayList<>();
-      for (int el:random) {
-        randoms.add(el);
-      }
-      randoms.parallelStream().
-          forEach(a->
-              System.out.printf("Number of occurences:%d,number:%d\n"
-                  ,Collections.frequency(randoms,a),a));
+      String[] p1 = { // 25
+          "BGBBGB",
+          "GGGGGG",
+          "BGBBGB",
+          "GGGGGG",
+          "BGBBGB",
+          "BGBBGB"};
+      String[] p2 = { //5
+          "GGGGGG",
+          "GBBBGB",
+          "GGGGGG",
+          "GGBBGB",
+          "GGGGGG"};
+      System.out.println(twoPluses(p1));
     }
 
 }
