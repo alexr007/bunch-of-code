@@ -177,5 +177,4 @@ public class ProblemsDay5 {
           "GGGGGG"};
       System.out.println(twoPluses(p1));
     }
-
 }
