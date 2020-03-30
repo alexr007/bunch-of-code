@@ -147,7 +147,7 @@ public class ProblemsDay5 {
         .collect(Collectors.toList());
     return combinations.stream().map(c -> {
       if (isPossibleAt(c.x1,c.y1,c.size1, data)) {
-              occupyAt(c.x1,c.y1,c.size1, data);
+        occupyAt(c.x1,c.y1,c.size1, data);
         if (isPossibleAt(c.x2,c.y2,c.size2, data)) {
           releaseAt(c.x1,c.y1,c.size1, data);
           return new PlusResult(c.size1, c.size2, true);
@@ -162,20 +162,26 @@ public class ProblemsDay5 {
         .orElseThrow(RuntimeException::new);
   }
 
-    public static void main(String[] args) {
-      String[] p1 = { // 25
-          "BGBBGB",
-          "GGGGGG",
-          "BGBBGB",
-          "GGGGGG",
-          "BGBBGB",
-          "BGBBGB"};
-      String[] p2 = { //5
-          "GGGGGG",
-          "GBBBGB",
-          "GGGGGG",
-          "GGBBGB",
-          "GGGGGG"};
-      System.out.println(twoPluses(p1));
-    }
+  public static void main_pluses(String[] args) {
+    String[] p1 = { // 25
+        "BGBBGB",
+        "GGGGGG",
+        "BGBBGB",
+        "GGGGGG",
+        "BGBBGB",
+        "BGBBGB"};
+    String[] p2 = { //5
+        "GGGGGG",
+        "GBBBGB",
+        "GGGGGG",
+        "GGBBGB",
+        "GGGGGG"};
+    System.out.println(twoPluses(p1));
+  }
+
+  static void almostSorted(int[] arr) {
+
+
+  }
+
 }
