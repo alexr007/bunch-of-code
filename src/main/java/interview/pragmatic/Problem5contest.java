@@ -13,8 +13,9 @@ public class Problem5contest {
   }
 
   static int popularity(int len, int[] pop) {
+    int[] primes = primes(1000);
     return IntStream.range(0, len).flatMap(idx1 ->
-        Arrays.stream(primes(1000))
+        Arrays.stream(primes)
             .map(p -> idx1 + p)
             .filter(idx2 -> idx2 < len)
             .map(idx2 -> pop[idx2]-pop[idx1])
