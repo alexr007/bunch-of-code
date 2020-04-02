@@ -12,7 +12,6 @@ public class Problem2permut {
 
   public static void perm(int N) {
     int c = (N+1)/2;
-
     for (int i = 1; i <= c; i++) {
       String s1 = times(i, '*');
       String s2 = times(N-i, '#');
@@ -24,13 +23,13 @@ public class Problem2permut {
     for (int i = c; i > 0 ;i--) { // even - ok // odd - need to change order
       String s1 = times(i, '*');
       String s2 = times(N-i, '#');
-      String s = (i&1)==0 ? s1+s2 : s2+s1;
-      if (!even) s = new StringBuilder(s).reverse().toString();
+      String s = ((i&1)==0)^(!even) ? s1+s2 : s2+s1;
+//      if (!even) s = new StringBuilder(s).reverse().toString();
       System.out.println(s);
     }
   }
 
   public static void main(String[] args) {
-    perm(8);
+    perm(7);
   }
 }

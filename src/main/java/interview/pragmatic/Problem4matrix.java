@@ -4,7 +4,7 @@ import java.util.StringJoiner;
 
 public class Problem4matrix {
 
-  static void traverse(int R, int C, int[][] m) {
+  static String traverse(int R, int C, int[][] m) {
     StringJoiner sj = new StringJoiner(" ");
     int r = 0;
     int c = 0;
@@ -33,7 +33,7 @@ public class Problem4matrix {
       }
 //      System.out.printf("> r=%2d, c=%2d, ND:%d\n",r,c,next);
     }
-    System.out.println(sj.toString());
+    return sj.toString();
   }
 
   public static void main(String[] args) {

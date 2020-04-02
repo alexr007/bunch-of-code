@@ -2,7 +2,7 @@ package interview.pragmatic;
 
 import java.util.Arrays;
 
-public class Problem3ships {
+public class Problem3shipments {
 
   static void ships(int n, int[] w) {
     int sum = Arrays.stream(w).sum();
