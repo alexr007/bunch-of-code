@@ -6,32 +6,23 @@ public class Problem4matrix {
 
   static String traverse(int R, int C, int[][] m) {
     StringJoiner sj = new StringJoiner(" ");
-    int r = 0;
-    int c = 0;
-    int next = 1;
+    int r = 0, c = 0, next = 0;
     while (true) {
-      int v = m[r][c];
-      sj.add(String.valueOf(v));
-//      System.out.printf("r=%2d, c=%2d, V:%2d D:%d --- ",r,c,v,next);
+      sj.add(String.valueOf(m[r][c]));
       if (r == R-1 && c == C-1) break;
       switch (next) {
+        case 0: c++; next++; break;
         case 1:
-               if (r == 0 && c == 0) {      c++; next = 2; } // first move
-          else if (r == 0)           { r++; c--; next = 2; } // first row
-          else if (r==R-1)           { r--; c++; next = 4; } // last row
+               if (r == R-1) {      c++; next++; } // last row
+          else if (c == 0  ) { r++;      next++; } // first column
+          else               { r++; c--;         }
           break;
         case 2:
-               if (r == R-1       ) {      c++; next = 1; } // last row
-          else if (         c == 0) { r++;      next = 4; } // first column
-          else                      { r++; c--;           } // keep moving
-          break;
-        case 4:
-               if (       c == C-1) { r++;      next = 2; } // last column
-          else if (r == 0         ) {      c++; next = 1; } // first row
-          else                      { r--; c++;           } // keep moving
+               if (c == C-1) { r++;      next--; } // last column
+          else if (r == 0  ) {      c++; next--; } // first row
+          else               { r--; c++;         }
           break;
       }
-//      System.out.printf("> r=%2d, c=%2d, ND:%d\n",r,c,next);
     }
     return sj.toString();
   }
@@ -42,9 +33,9 @@ public class Problem4matrix {
         {5,  6, 7},
         {9, 10,11},
         {13,14,15},
-        {17,18,19},
-        {21,22,23},
-        {25,26,27},
+//        {17,18,19},
+//        {21,22,23},
+//        {25,26,27},
 //        {1,  2, 3, 4, },
 //        {5,  6, 7, 8, },
 //        {9, 10,11, 12,},
@@ -67,6 +58,6 @@ public class Problem4matrix {
 //        {21,22,23, 24, 105},
 //        {25,26,27, 28, 106},
     };
-    traverse(a.length, a[0].length, a);
+    System.out.println(traverse(a.length, a[0].length, a));
   }
 }

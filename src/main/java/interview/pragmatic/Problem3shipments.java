@@ -12,7 +12,8 @@ public class Problem3shipments {
   }
 
   public static void main(String[] args) {
-    int[] a = {1,1,1,1,6};
+    int[] a = {10,20,2,3,15};
+//    int[] a = {1,1,1,1,16};
     ships(a.length, a);
   }
 }
