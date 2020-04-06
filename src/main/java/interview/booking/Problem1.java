@@ -2,7 +2,7 @@ package interview.booking;
 
 public class Problem1 {
 
-  public static String getShiftedString(String orig, int leftShifts, int rightShifts) {
+  public static String getShiftedStringV1(String orig, int leftShifts, int rightShifts) {
     int len = orig.length();
     int total = (rightShifts - leftShifts) % len;
     if (total > 0) {
@@ -16,5 +16,14 @@ public class Problem1 {
       return part2.concat(part1);
     }
     return orig;
+  }
+
+  public static String getShiftedStringV2(String orig, int leftShifts, int rightShifts) {
+    int len = orig.length();
+    int total = (rightShifts - leftShifts) % len;
+    if (total == 0) return orig;
+    int middle = (total > 0) ? len-total : -total;
+    return orig.substring(middle)
+        .concat(orig.substring(0, middle));
   }
 }
