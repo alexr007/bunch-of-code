@@ -2,7 +2,7 @@ package interview.pragmatic;
 
 import java.util.StringJoiner;
 
-public class Problem4matrix {
+public class Problem4matrixDiagonal {
 
   static String traverse(int R, int C, int[][] m) {
     StringJoiner sj = new StringJoiner(" ");
