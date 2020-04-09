@@ -1,6 +1,8 @@
 package interview.pragmatic;
 
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Problem4matrixHorisontal {
 
@@ -22,6 +24,17 @@ public class Problem4matrixHorisontal {
       }
     }
     return sj.toString();
+  }
+
+  static String traverseHor2(int R, int C, int[][] m) {
+    return IntStream.range(0, R * C).map(abs -> {
+      int row = abs / C;
+      int shift = abs - row * C;
+      int col = (row&1)==0 ? shift : C-1-shift;
+      return m[row][col];
+    })
+        .mapToObj(String::valueOf)
+        .collect(Collectors.joining(" "));
   }
 
   static void traverseHorRR1(int R, int C, int[][] m, int r, int c, int dir, int cnt, int exp, StringJoiner sj) {
@@ -81,6 +94,7 @@ public class Problem4matrixHorisontal {
 //        {25,26,27, 28, 106},
     };
     System.out.println(traverseHor(a.length, a[0].length, a));
+    System.out.println(traverseHor2(a.length, a[0].length, a));
     System.out.println(traverseHorR(a.length, a[0].length, a));
   }
 }
