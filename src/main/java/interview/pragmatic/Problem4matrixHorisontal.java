@@ -1,5 +1,7 @@
 package interview.pragmatic;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -34,6 +36,21 @@ public class Problem4matrixHorisontal {
       return m[row][col];
     })
         .mapToObj(String::valueOf)
+        .collect(Collectors.joining(" "));
+  }
+
+  static List<Integer> traverseHorRXR(int R, int C, int[][] m, int idx, List<Integer> acc) {
+    if (idx == R*C) return acc;
+    int row = idx / C;
+    int shift = idx - row * C;
+    int col = (row&1)==0 ? shift : C-1-shift;
+    acc.add(m[row][col]);
+    return traverseHorRXR(R, C, m, idx+1, acc);
+  }
+
+  static String traverseHorRX(int R, int C, int[][] m) {
+    return traverseHorRXR(R, C, m, 0, new LinkedList<>()).stream()
+        .map(String::valueOf)
         .collect(Collectors.joining(" "));
   }
 
@@ -96,5 +113,6 @@ public class Problem4matrixHorisontal {
     System.out.println(traverseHor(a.length, a[0].length, a));
     System.out.println(traverseHor2(a.length, a[0].length, a));
     System.out.println(traverseHorR(a.length, a[0].length, a));
+    System.out.println(traverseHorRX(a.length, a[0].length, a));
   }
 }
