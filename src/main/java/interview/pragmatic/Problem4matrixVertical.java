@@ -19,6 +19,12 @@ public class Problem4matrixVertical {
 
   public static void main(String[] args) {
     int[][]a = {
+        {1,  2, 3, 4, },
+        {5,  6, 7, 8, },
+        {9, 10,11, 12,},
+        {13,14,15, 16,},
+        {17,18,19, 20,},
+    };
 //        {1,  2, 3},
 //        {5,  6, 7},
 //        {9, 10,11},
@@ -26,11 +32,6 @@ public class Problem4matrixVertical {
 //        {17,18,19},
 //        {21,22,23},
 //        {25,26,27},
-        {1,  2, 3, 4, },
-        {5,  6, 7, 8, },
-        {9, 10,11, 12,},
-        {13,14,15, 16,},
-        {17,18,19, 20,},
 //        {21,22,23, 24,},
 //        {25,26,27, 28,},
 //        {1,  2,},
@@ -47,7 +48,9 @@ public class Problem4matrixVertical {
 //        {17,18,19, 20, 104},
 //        {21,22,23, 24, 105},
 //        {25,26,27, 28, 106},
-    };
+    // reference output
+    System.out.println("4 8 12 16 20 19 15 11 7 3 2 6 10 14 18 17 13 9 5 1");
+    // your output
     System.out.println(traverseVer(a.length, a[0].length, a));
   }
 }
