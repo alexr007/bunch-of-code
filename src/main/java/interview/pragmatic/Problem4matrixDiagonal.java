@@ -404,6 +404,81 @@ public class Problem4matrixDiagonal {
         .collect(Collectors.joining(" "));         // String
   }
 
+  static String traverse8(int R, int C, int[][] m) {
+
+    final List<Integer> result = new LinkedList<>();
+
+    class Track {
+      final int r;
+      final int c;
+      final int next;
+
+      public Track() {
+        this(0,0,0);
+      }
+
+      public Track(int r, int c, int next) {
+        this.r = r;
+        this.c = c;
+        this.next = next;
+      }
+
+      Track c(int delta) {
+        return new Track(r,c+delta, next);
+      }
+
+      Track r(int delta) {
+        return new Track(r+delta, c, next);
+      }
+
+      Track nxt(int value) {
+        return new Track(r, c, value);
+      }
+
+      Track add(int value) {
+        result.add(value);
+        return this;
+      }
+
+      boolean isRowFirst() {
+        return r == 0;
+      }
+
+      boolean isRowLast() {
+        return r == R - 1;
+      }
+
+      boolean isColFirst() {
+        return c == 0;
+      }
+
+      boolean isColLast() {
+        return c == C - 1;
+      }
+
+      public Track step() {
+        add(m[r][c]);
+        return next==1 ? isRowLast() ? c(1).nxt(2) : isColFirst() ? r(1).nxt(2) : r(1).c(-1)
+             : next==2 ? isColLast() ? r(1).nxt(1) : isRowFirst() ? c(1).nxt(1) : r(-1).c(1)
+             : c(1).nxt(1);
+      }
+
+    }
+
+    class Iterate {
+      Track step(int n, Track t) {
+        if (n==0) return t;
+        return step(n-1, t.step());
+      }
+    }
+
+    new Iterate().step(R * C, new Track());
+
+    return result.stream()                         // Stream<Integer>
+        .map(String::valueOf)                      // Stream<String>
+        .collect(Collectors.joining(" ")); // String
+  }
+
   public static void main(String[] args) {
 //        {1,  2, 3},
 //        {5,  6, 7},
@@ -437,12 +512,13 @@ public class Problem4matrixDiagonal {
 //        {25,26,27, 28, 106},
 //    };
     System.out.println("1 2 5 9 6 3 4 7 10 13 17 14 11 8 12 15 18 21 25 22 19 16 20 23 26 27 24 28");
-    System.out.println(traverse1(a.length, a[0].length, a));
-    System.out.println(traverse2(a.length, a[0].length, a));
-    System.out.println(traverse3(a.length, a[0].length, a));
-    System.out.println(traverse4(a.length, a[0].length, a));
-    System.out.println(traverse5(a.length, a[0].length, a));
-    System.out.println(traverse6(a.length, a[0].length, a));
-    System.out.println(traverse7(a.length, a[0].length, a));
+//    System.out.println(traverse1(a.length, a[0].length, a));
+//    System.out.println(traverse2(a.length, a[0].length, a));
+//    System.out.println(traverse3(a.length, a[0].length, a));
+//    System.out.println(traverse4(a.length, a[0].length, a));
+//    System.out.println(traverse5(a.length, a[0].length, a));
+//    System.out.println(traverse6(a.length, a[0].length, a));
+//    System.out.println(traverse7(a.length, a[0].length, a));
+    System.out.println(traverse8(a.length, a[0].length, a));
   }
 }
