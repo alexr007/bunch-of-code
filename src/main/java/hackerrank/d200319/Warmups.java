@@ -34,7 +34,7 @@ public class Warmups {
     System.out.printf("%7f\n%7f\n%7f", p, n, z);
   }
 
-  public static int diagonalDifference(List<List<Integer>> data) {
+  public static int diagonalDifference1(List<List<Integer>> data) {
     int s1 = 0;
     int s2 = 0;
     for (int i = 0; i < data.size(); i++) {
@@ -43,6 +43,32 @@ public class Warmups {
       s2 += line.get(line.size() - i - 1);
     }
     return Math.abs(s1 - s2);
+  }
+
+  public static int diagonalDifference2(List<List<Integer>> data) {
+    return Math.abs(
+        IntStream.range(0, data.size()).map(i -> data.get(i).get(i)).sum() -
+        IntStream.range(0, data.size()).map(i -> data.get(i).get(data.size()-1-i)).sum()
+    );
+  }
+
+  public static int diagonalDifference3(List<List<Integer>> data) {
+    class Pair {
+      final int a;
+      final int b;
+
+      Pair(int a, int b) {
+        this.a = a;
+        this.b = b;
+      }
+    }
+    return IntStream.range(0, data.size()).mapToObj(i -> new Pair(
+        data.get(i).get(i),
+        data.get(i).get(data.size() - 1 - i)
+    ))
+        .reduce((p1, p2) -> new Pair(p1.a + p2.a, p1.b + p2.b))
+        .map(p -> Math.abs(p.a - p.b))
+        .orElseThrow(RuntimeException::new);
   }
 
   static long aVeryBigSum(long[] ar) {
