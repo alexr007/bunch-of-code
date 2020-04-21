@@ -1,4 +1,4 @@
-package hackerrank.d200319;
+package hackerrank.d200319_04;
 
 public class Problem05_Clouds {
   static int calc(int[] clouds) {

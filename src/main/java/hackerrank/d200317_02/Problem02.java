@@ -1,4 +1,4 @@
-package hackerrank.d200317;
+package hackerrank.d200317_02;
 
 import java.util.Arrays;
 import java.util.List;

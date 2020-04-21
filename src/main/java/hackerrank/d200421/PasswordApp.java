@@ -80,8 +80,8 @@ public class PasswordApp {
 //    System.out.println(isValid("000A", 108738450));
 //    System.out.println(isValid("000A", 108738449)); //t
 //    System.out.println(isValid("000A", 244736787)); //t
-//    System.out.println(Long.MAX_VALUE);
-//    System.out.println(pow(131,9));
-//    System.out.println(Math.pow(131, 9));
+    System.out.println(Long.MAX_VALUE);
+    System.out.println(pow(131,9));
+    System.out.println(Math.pow(131, 9));
   }
 }

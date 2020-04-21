@@ -1,4 +1,4 @@
-package hackerrank.d200320;
+package hackerrank.d200320_05;
 
 import java.io.IOException;
 import java.nio.file.Files;

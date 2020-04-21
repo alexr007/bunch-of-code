@@ -1,4 +1,4 @@
-package hackerrank.d200319;
+package hackerrank.d200319_04;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
