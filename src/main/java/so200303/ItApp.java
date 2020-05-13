@@ -1,4 +1,4 @@
-package s0200303;
+package so200303;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
