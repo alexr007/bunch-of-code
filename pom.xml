@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <jetty.version>9.4.28.v20200408</jetty.version>
         <guice.version>4.2.3</guice.version>
     </properties>
 
