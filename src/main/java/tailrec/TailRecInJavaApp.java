@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
 
-public class RailRecInJavaApp {
+public class TailRecInJavaApp {
   /**
    * formally tail recursive function is function which
    * call itself as the last statement
@@ -26,7 +26,7 @@ public class RailRecInJavaApp {
    *
    */
   public interface TR2F<A, B, C> extends BiFunction<A, B, Either<C, Tuple2<A,B>>> {
-    default Either<C, Tuple2<A, B>> finish(C result) {
+    default Either<C, Tuple2<A, B>> finishWith(C result) {
       return Either.left(result);
     }
 
@@ -52,7 +52,7 @@ public class RailRecInJavaApp {
       @Override
       public Either<Integer, Tuple2<Integer, Integer>> apply(Integer idx, Integer res) {
         // terminate condition
-        if (idx == data.size()) return finish(res);
+        if (idx == data.size()) return finishWith(res);
         // tail recursion
         return continueWith(idx+1, res + data.get(idx));
       }
