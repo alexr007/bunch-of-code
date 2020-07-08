@@ -1,9 +1,9 @@
-package strip;
+package kata13.strip;
 
-import strip.filter.Strip;
-import strip.filter.CommentsStripEmptyOnly;
-import strip.state.FileState;
-import strip.state.LineState;
+import kata13.strip.filter.Strip;
+import kata13.strip.filter.CommentsStripEmptyOnly;
+import kata13.strip.state.FileState;
+import kata13.strip.state.LineState;
 
 import java.net.URL;
 import java.nio.file.Files;

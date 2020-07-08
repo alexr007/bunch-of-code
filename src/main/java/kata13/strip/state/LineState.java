@@ -1,4 +1,4 @@
-package strip.state;
+package kata13.strip.state;
 
 public class LineState {
   public final String input;

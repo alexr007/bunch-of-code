@@ -1,11 +1,10 @@
-package strip;
+package kata13.strip;
 
 import lombok.SneakyThrows;
-import strip.filter.CommentsStripEmptyOnly;
-import strip.filter.Strip;
-import strip.filter.CommentsStripEmptyAndLine;
-import strip.state.FileState;
-import strip.state.LineState;
+import kata13.strip.filter.Strip;
+import kata13.strip.filter.CommentsStripEmptyAndLine;
+import kata13.strip.state.FileState;
+import kata13.strip.state.LineState;
 
 import java.net.URI;
 import java.nio.file.Files;

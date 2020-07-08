@@ -1,6 +1,6 @@
-package strip.filter;
+package kata13.strip.filter;
 
-import strip.state.LineState;
+import kata13.strip.state.LineState;
 
 public interface Strip {
   String LINE = "//";
