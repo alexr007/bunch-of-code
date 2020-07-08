@@ -2,7 +2,7 @@ package kata13.val;
 
 import java.util.Arrays;
 
-public class RowInfo {
+public final class RowInfo {
   public final int level;
   public final String name;
   public final long count;
@@ -21,13 +21,10 @@ public class RowInfo {
     return new String(bs);
   }
 
-  public String show() {
-    return String.format("%s%s : %d", indent(), name, count);
-  }
-
   @Override
   public String toString() {
-    return show();
+    return String.format("%s%s : %d",
+        indent(), name, count);
   }
 }
 

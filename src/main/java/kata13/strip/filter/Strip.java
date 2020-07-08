@@ -6,5 +6,9 @@ public interface Strip {
   String LINE = "//";
   String BLOCK_OP = "/*";
   String BLOCK_CL = "*/";
+
   LineState process(LineState ls);
+  default int count(StringBuilder sb) {
+    return 1;
+  }
 }

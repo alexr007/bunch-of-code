@@ -1,5 +1,12 @@
 package kata13.strip.state;
 
+/**
+ * LineState:
+ *  String input;
+ *  int pos;
+ *  StringBuilder output;
+ *  boolean inBlock;
+ */
 public class LineState {
   public final String input;
   public final int pos;
@@ -18,14 +25,15 @@ public class LineState {
   }
 
   public LineState moveTo(int pos, boolean inBlock) {
-    return new LineState(this.input, pos, this.output, inBlock);
+    return new LineState(input, pos, output, inBlock);
+  }
+
+  public LineState switchAndMove(int pos) {
+    return new LineState(input, pos, output, !inBlock);
   }
 
   public LineState finish() {
-    return finish(this.inBlock);
+    return new LineState(input, input.length(), output, inBlock);
   }
 
-  public LineState finish(boolean inBlock) {
-    return new LineState(this.input, this.input.length(), this.output, inBlock);
-  }
 }

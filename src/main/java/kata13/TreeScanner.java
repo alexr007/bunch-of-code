@@ -1,11 +1,10 @@
 package kata13;
 
-import kata13.count.LineCounter;
-import kata13.val.Node;
-import kata13.val.RowInfo;
+import org.alexr.kata13.count.LineCounter;
+import org.alexr.kata13.val.Node;
+import org.alexr.kata13.val.RowInfo;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,11 +17,7 @@ public class TreeScanner {
   }
 
   static String last(File f) {
-    return last(f.toPath());
-  }
-
-  static String last(Path path) {
-    String[] chunks = path.toString().split("/");
+    String[] chunks = f.toPath().toString().split("/");
     return chunks[chunks.length-1];
   }
 
@@ -35,7 +30,9 @@ public class TreeScanner {
   }
 
   public Node scan(File file, int level) {
-    if (file.isFile()) return filterExt(file) ? Node.File(file, level, new LineCounter(file).simple()) : Node.Other(file, level);
+    if (file.isFile()) return filterExt(file) ?
+        Node.File(file, level, new LineCounter(file).simple()) :
+        Node.Other(file, level);
     if (file.isDirectory()) {
       File[] files = file.listFiles();
       Set<Node> nodes = files == null ? Collections.emptySet() : Arrays.stream(files)
@@ -62,7 +59,7 @@ public class TreeScanner {
     return items;
   }
 
-  public Stream<String> countAll() {
+  public Stream<String> process() {
     return represent(scan(root)).stream()
         .map(RowInfo::toString);
   }

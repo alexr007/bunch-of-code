@@ -1,8 +1,7 @@
 package kata13.strip;
 
 import lombok.SneakyThrows;
-import kata13.strip.filter.Strip;
-import kata13.strip.filter.CommentsStripEmptyAndLine;
+import kata13.strip.filter.*;
 import kata13.strip.state.FileState;
 import kata13.strip.state.LineState;
 
@@ -13,26 +12,21 @@ import java.util.Iterator;
 import java.util.function.BiFunction;
 
 public class StripComments {
+
   // particular implementation
   private final Strip impl =
-//      new CommentsStripEmptyOnly();
-      new CommentsStripEmptyAndLine();
-
-  // count line after filtering
-  private int countLine(StringBuilder sb) {
-    return sb.toString().isBlank() ? 0 : 1;
-  }
+//      new Strip0Nothing(); // 61 lines
+//      new Strip1BlankLines(); // 52 = 61 - 9 blank
+//      new Strip2LineOnlyComments(); // 45 = 52 - 7 single lines
+//      new Strip3BlockOnlyComments();  // 46 = 52 - 6 blocks
+      new Strip4AllComments();  // 39 = 52 - 6 - 7
 
   public FileState fold_fn(FileState acc, String line) {
-    // create fresh state: line, pos=0, empty SB, inBlock from initial state
     LineState ls = LineState.fresh(line, acc.inBlock);
     while (ls.pos < ls.input.length()) {
-      // all the logic in the process function
       ls = impl.process(ls);
     }
-    int count = countLine(ls.output);
-    // update accumulator with (new) counter and new inBlock
-    return acc.next(count, ls.inBlock);
+    return acc.next(impl.count(ls.output), ls.inBlock);
   }
 
   public <A, C> A fold(Iterable<C> data, A zero, BiFunction<A, C, A> f) {
@@ -48,7 +42,7 @@ public class StripComments {
   @SneakyThrows
   public static void main(String[] args) {
     StripComments strip = new StripComments();
-    URI uri = strip.getClass().getClassLoader().resources("StripComments.java")
+    URI uri = strip.getClass().getClassLoader().resources("Strip0.java")
         .findFirst()
         .orElseThrow()
         .toURI();

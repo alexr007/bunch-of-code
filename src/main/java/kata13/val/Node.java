@@ -10,7 +10,7 @@ public abstract class Node {
   public final long count;
   public final Set<Node> children;
 
-  protected Node(File file, int level, long count, Set<Node> children) {
+  private Node(File file, int level, long count, Set<Node> children) {
     this.file = file;
     this.level = level;
     this.count = count;
@@ -28,5 +28,6 @@ public abstract class Node {
   public static Node Other(File file, int level) {
     return new Node(file, level, 0, Collections.emptySet()) {};
   }
+
 }
 

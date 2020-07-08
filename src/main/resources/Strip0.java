@@ -12,9 +12,9 @@ import java.util.Iterator;
 import java.util.function.BiFunction;
 
 public class StripComments {
-  private final static String LINE = "//";
+  /*private final static String LINE = "//";*/
   private final static String BLOCK_OP = "/*";
-  private final static String BLOCK_CL = "*/";
+  private /*final*/ static /*String*/ BLOCK_CL = "*/";
   // particular implementation
   private final Strip impl = new CommentsStripEmptyOnly();
 
@@ -26,7 +26,7 @@ public class StripComments {
   public FileState fold_fn(FileState acc, String line) {
     // create fresh state: line, pos=0, empty SB, inBlock from initial state
     LineState ls = LineState.fresh(line, acc.inBlock);
-    while (ls.pos < ls.input.length()) {
+    w/*hile (ls.pos < ls.input.length()) {*/
       // all the logic in the process function
       ls = impl.process(ls);
     }
@@ -39,11 +39,11 @@ public class StripComments {
     return fold(data.iterator(), zero, f);
   }
 
-  public <A, C> A fold(Iterator<C> it, A zero, BiFunction<A, C, A> f) {
+/*public <A, C> A fold(Iterator<C> it, A zero, BiFunction<A, C, A> f) {
     A r = zero;
     while (it.hasNext()) r = f.apply(r, it.next());
     return r;
-  }
+  }*/
 
   public static void main(String[] args) {
     StripComments strip = new StripComments();
