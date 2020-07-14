@@ -23,21 +23,17 @@ public class CompletableFutureExApp {
 
   static Supplier<Double> foreverDots(long millis) {
     return  () -> {
+      try {
         System.out.printf("Dot printer... started in thread: %s\n", Thread.currentThread().getName());
         int i = 0;
         while (++i < 25) {
-          if (Thread.interrupted()) {
-            System.out.println("INTERRUPTED");
-            break;
-          }
           System.out.print(".");
-          try {
-            TimeUnit.MILLISECONDS.sleep(millis);
-          } catch (InterruptedException e) {
-            throw new IllegalStateException("Somebody Interrupted me", e);
-          }
+          Thread.sleep(millis);
         }
         return Math.PI;
+      } catch (InterruptedException e) {
+        throw new IllegalStateException("somebody has interrupted me");
+      }
     };
   }
 
@@ -72,7 +68,6 @@ public class CompletableFutureExApp {
     CompletableFuture<Integer> cf_age = CompletableFuture.supplyAsync(ageFetcher(2000), ex);
     return cf_age.thenCombine(cf_name, (age, name) -> new Person(age, name));
   }
-
 
 
   public static <T> CompletableFuture<T> supplyAsyncInterruptibly(Supplier<T> supplier, Executor executor) {
