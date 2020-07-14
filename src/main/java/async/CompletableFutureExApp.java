@@ -4,6 +4,15 @@ import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+/**
+ * https://annimon.com/article/3462
+ * https://habr.com/ru/post/213319/
+ *
+ * https://blog.knoldus.com/future-vs-completablefuture-1/
+ * https://medium.com/knoldus/future-vs-completablefuture-in-java-2-9a2dfa217555
+ *
+ * https://www.callicoder.com/java-8-completablefuture-tutorial/
+ */
 public class CompletableFutureExApp {
 
   static class Person {
